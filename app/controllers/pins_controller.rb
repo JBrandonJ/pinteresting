@@ -2,6 +2,7 @@ class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  
 
   def index
     @pins = Pin.all
@@ -39,6 +40,7 @@ class PinsController < ApplicationController
     redirect_to pins_url
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
@@ -53,6 +55,7 @@ class PinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:description)
+      params.require(:pin).permit(:description, :image)
     end
+
 end
